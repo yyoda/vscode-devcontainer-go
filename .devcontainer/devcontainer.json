@@ -1,0 +1,26 @@
+{
+	"dockerFile": "Dockerfile",
+	"appPort": [9000],
+	"workspaceFolder": "/root/go/src/github.com/yyoda/vscode-devcontainer-go",
+	"runArgs": [
+		// bind workspace.
+		"-v", "${localWorkspaceFolder}:/root/go/src/github.com/yyoda/vscode-devcontainer-go",
+		// git and ssh configuration.
+		"-v", "~/.gitconfig:/root/.gitconfig",
+		"-v", "~/.ssh:/root/.ssh-localhost",
+		// allow ptrace.
+		"--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"
+	],
+	"settings": { 
+		"go.gopath": "~/go",
+		"go.useLanguageServer": true,
+		"[go]": {
+			"editor.formatOnSave": true
+		}
+	},
+	"extensions": [
+		"ms-vscode.go"
+	],
+	// adjust ssh key files permission.
+	"postCreateCommand": "mkdir -p /root/.ssh && cp -r /root/.ssh-localhost/* /root/.ssh && chmod 700 /root/.ssh && chmod 600 /root/.ssh/*"
+}
