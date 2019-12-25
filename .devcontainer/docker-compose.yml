@@ -1,0 +1,35 @@
+version: '3'
+services:
+  main:
+    build:
+      context: ../
+      dockerfile: ./.devcontainer/Dockerfile
+    volumes:
+      - ../:/root/go/src/github.com/yyoda/vscode-devcontainer-go
+      - ~/.gitconfig:/root/.gitconfig
+      - ~/.ssh:/root/.ssh-localhost
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: sleep infinity
+    ports:
+        - "9000"
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: main
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - "3306"
+  redis:
+    image: redis:latest
+    ports:
+      - "6379"

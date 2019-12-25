@@ -1,17 +1,11 @@
 {
-	"dockerFile": "Dockerfile",
-	"appPort": [9000],
-	"workspaceFolder": "/root/go/src/github.com/yyoda/vscode-devcontainer-go",
-	"runArgs": [
-		// bind workspace.
-		"-v", "${localWorkspaceFolder}:/root/go/src/github.com/yyoda/vscode-devcontainer-go",
-		// git and ssh configuration.
-		"-v", "~/.gitconfig:/root/.gitconfig",
-		"-v", "~/.ssh:/root/.ssh-localhost",
-		// allow ptrace.
-		"--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"
+	"dockerComposeFile": [
+		"docker-compose.yml"
 	],
-	"settings": { 
+	"service": "main",
+	"workspaceFolder": "/root/go/src/github.com/yyoda/vscode-devcontainer-go",
+	"shutdownAction": "stopCompose",
+	"settings": {
 		"go.gopath": "~/go",
 		"go.useLanguageServer": true,
 		"[go]": {
