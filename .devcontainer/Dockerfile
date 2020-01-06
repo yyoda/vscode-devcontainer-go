@@ -4,7 +4,8 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     wget \
     git \
-    vim
+    vim \
+    gcc
 
 # golang
 ARG GO_VERSION=1.13.5
