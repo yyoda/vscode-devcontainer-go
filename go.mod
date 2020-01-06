@@ -1,4 +1,4 @@
-module ygo
+module github.com/yyoda/vscode-devcontainer-go
 
 go 1.13
 
