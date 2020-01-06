@@ -14,7 +14,7 @@ services:
       - seccomp:unconfined
     command: sleep infinity
     ports:
-        - "9000"
+        - "9000:9000"
   mysql:
     image: mysql:latest
     environment:
@@ -28,8 +28,8 @@ services:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
-      - "3306"
+      - "3306:3306"
   redis:
     image: redis:latest
     ports:
-      - "6379"
+      - "6379:6379"
