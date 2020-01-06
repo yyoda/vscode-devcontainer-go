@@ -17,3 +17,4 @@ vendor/
 go.sum
 
 .devcontainer/mysql/data/
+.vscode/
