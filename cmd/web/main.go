@@ -7,8 +7,10 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", handler.SayhelloName) //アクセスのルーティングを設定します。
-	err := http.ListenAndServe(":9000", nil)   //監視するポートを設定します。
+	http.HandleFunc("/", handler.Hello)
+	http.HandleFunc("/health", handler.Health)
+
+	err := http.ListenAndServe(":9000", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
