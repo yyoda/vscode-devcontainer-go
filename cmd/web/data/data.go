@@ -19,9 +19,8 @@ func init() {
 	db = sqlxdb
 
 	// redis
-	redisConnStr := getEnv("REDIS_CONNECTION", "redis:6379")
 	redisClient := redis.NewClient(&redis.Options{
-		Addr:     redisConnStr,
+		Addr:     getEnv("REDIS_CONNECTION", "redis:6379"),
 		Password: "",
 		DB:       0,
 	})
@@ -29,9 +28,9 @@ func init() {
 }
 
 func getEnv(key string, defaultValue string) string {
-	value := os.Getenv(key)
-	if value == "" {
-		value = defaultValue
+	val := os.Getenv(key)
+	if val == "" {
+		val = defaultValue
 	}
-	return value
+	return val
 }
