@@ -1,6 +1,7 @@
 package data
 
 import (
+	"github.com/wesovilabs/koazee"
 	"github.com/yyoda/vscode-devcontainer-go/cmd/web/model"
 	"log"
 )
@@ -19,4 +20,23 @@ func GetUser(id int) *model.User {
 	}
 
 	return nil
+}
+
+// GetAllUser .
+func GetAllUser() *[]model.User {
+	users := []model.User{}
+	err := db.Select(&users, "SELECT * FROM Users")
+	if err != nil {
+		log.Fatal(err)
+		return nil
+	}
+
+	return &users
+}
+
+// GetLastUser .
+func GetLastUser() *model.User {
+	users := GetAllUser()
+	user := koazee.StreamOf(*users).Last().Val().(model.User)
+	return &user
 }
