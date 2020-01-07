@@ -5,7 +5,8 @@ import (
 	"net/http"
 )
 
-// Health .
-func Health(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "healthy")
+func init() {
+	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "healthy")
+	})
 }
