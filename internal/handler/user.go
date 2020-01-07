@@ -2,7 +2,7 @@ package handler
 
 import (
 	"fmt"
-	"github.com/yyoda/vscode-devcontainer-go/cmd/web/data"
+	"github.com/yyoda/vscode-devcontainer-go/internal/data"
 	"net/http"
 	"strconv"
 )

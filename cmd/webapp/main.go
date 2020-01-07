@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "github.com/go-sql-driver/mysql"
-	_ "github.com/yyoda/vscode-devcontainer-go/cmd/web/handler"
+	_ "github.com/yyoda/vscode-devcontainer-go/internal/handler"
 	"log"
 	"net/http"
 )

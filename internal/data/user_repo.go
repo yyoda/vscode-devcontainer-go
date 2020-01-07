@@ -2,7 +2,7 @@ package data
 
 import (
 	"github.com/wesovilabs/koazee"
-	"github.com/yyoda/vscode-devcontainer-go/cmd/web/model"
+	"github.com/yyoda/vscode-devcontainer-go/internal/model"
 	"log"
 )
 
